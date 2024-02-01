@@ -48,10 +48,11 @@ vim.g.maplocalleader = ' '
 require 'lazy-bootstrap'
 
 -- [[ Setting options ]]
-require 'lazy-plugins'
+require('lazy').setup("plugins")
 
 -- [[ Configure plugins ]]
 require 'options'
+vim.cmd.colorscheme "catppuccin"
 
 -- [[ Basic Keymaps ]]
 require 'keymaps'
