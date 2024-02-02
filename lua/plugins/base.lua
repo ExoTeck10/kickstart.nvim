@@ -14,7 +14,15 @@ return {
   'tpope/vim-sleuth',
 
   -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim',  opts = {} },
+  {
+    'folke/which-key.nvim',
+    event = "VeryLazy",
+    init = function()
+      vim.o.timeout = true
+      vim.o.timeoutlen = 300
+    end,
+    opts = {}
+  },
 
   {
     -- Set lualine as statusline
@@ -28,6 +36,17 @@ return {
         section_separators = '',
       },
     },
+  },
+
+  -- Catppuccin thene
+  {
+    'catppuccin/nvim',
+    name = "catppuccin",
+    lazy = false,
+    priority = 1000,
+    opts = {
+      flavour = "macchiato",
+    }
   },
 
   {
