@@ -60,19 +60,14 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- [[ Setting options ]]
+-- [[ Setting lazy.nvim ]]
 require('lazy').setup("plugins")
 
--- [[ Configure plugins ]]
 require 'options'
 vim.cmd.colorscheme "catppuccin"
 
 -- [[ Basic Keymaps ]]
 require 'keymaps'
-
--- [[ Configure Treesitter ]]
--- (syntax parser for highlighting)
-require 'treesitter-setup'
 
 -- [[ Configure LSP ]]
 require 'lsp-setup'
