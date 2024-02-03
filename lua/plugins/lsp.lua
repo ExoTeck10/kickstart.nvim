@@ -17,25 +17,20 @@ return {
       'williamboman/mason.nvim',
       'williamboman/mason-lspconfig.nvim',
     },
-    opts = {
-      servers = {
-        lua_ls = {
-          Lua = {
-            workspace = { checkThirdParty = false },
-            telemetry = { enable = false },
-            -- NOTE: toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-            -- diagnostics = { disable = { 'missing-fields' } },
-          },
-        },
-        gopls = {},
-        pyright = {},
-        jsonls = {},
-        yamlls = {},
-        tflint = {},
-      }
-    },
-    config = function(_, opts)
-      require('plugins.configs.lspconfig').setup(opts)
+    config = function()
+      require('plugins.configs.lspconfig')
     end
-  }
+  },
+  {
+    "jay-babu/mason-null-ls.nvim",
+    event = { 'BufReadPre', 'BufNewFile' },
+    dependencies = {
+      'williamboman/mason.nvim',
+      "nvimtools/none-ls.nvim",
+    },
+    config = function()
+      require('plugins.configs.null-ls')
+    end
+
+  },
 }
