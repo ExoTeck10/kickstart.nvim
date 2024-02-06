@@ -1,5 +1,24 @@
 -- [[ Configure Telescope ]]
 -- See `:help telescope` and `:help telescope.setup()`
+require('telescope').setup {
+  defaults = {
+    mappings = {
+      i = {
+        ['<C-u>'] = false,
+        ['<C-d>'] = false,
+      },
+    },
+  },
+  extensions = {
+    ['ui-select'] = {
+      require('telescope.themes').get_dropdown {},
+    },
+  },
+}
+require('telescope').load_extension 'fzf'
+require('telescope').load_extension 'ui-select'
+
+local builtin = require 'telescope.builtin'
 
 -- Telescope live_grep in git root
 -- Function to find the git root directory based on the current buffer's path
