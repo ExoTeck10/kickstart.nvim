@@ -1,11 +1,9 @@
 return {
-  "nvim-neo-tree/neo-tree.nvim",
-  branch = "v3.x",
+  'jay-babu/mason-null-ls.nvim',
+  event = { 'BufReadPre', 'BufNewFile' },
   dependencies = {
-    "nvim-lua/plenary.nvim",
-    "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-    "MunifTanjim/nui.nvim",
-    -- "3rd/image.nvim", -- Optional image support in preview window: See `# Preview Mode` for more information
+    'williamboman/mason.nvim',
+    'nvimtools/none-ls.nvim',
   },
   config = function()
     local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
@@ -43,5 +41,5 @@ return {
       ensure_installed = nil,
       automatic_installation = true,
     }
-  end
+  end,
 }
