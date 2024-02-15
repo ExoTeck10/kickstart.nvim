@@ -14,7 +14,7 @@ return {
     },
   },
   config = function()
-    require('telescope').setup({
+    require('telescope').setup {
       defaults = {
         mappings = {
           i = {
@@ -28,7 +28,7 @@ return {
           require('telescope.themes').get_dropdown {},
         },
       },
-    })
+    }
     require('telescope').load_extension 'fzf'
     require('telescope').load_extension 'ui-select'
 
@@ -48,8 +48,7 @@ return {
       end
 
       -- Find the Git root directory from the current file's path
-      local git_root = vim.fn.systemlist('git -C ' .. vim.fn.escape(current_dir, ' ') .. ' rev-parse --show-toplevel')
-          [1]
+      local git_root = vim.fn.systemlist('git -C ' .. vim.fn.escape(current_dir, ' ') .. ' rev-parse --show-toplevel')[1]
       if vim.v.shell_error ~= 0 then
         print 'Not a git repository. Searching on current working directory'
         return cwd
@@ -75,13 +74,11 @@ return {
         prompt_title = 'Live Grep in Open Files',
       }
     end
-    vim.keymap.set('n', '<leader>s/', telescope_live_grep_open_files, { desc = '[S]earch [/] in Open Files' })
 
     -- See `:help telescope.builtin`
     vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = '[?] Find recently opened files' })
     vim.keymap.set('n', '<leader><space>', require('telescope.builtin').buffers, { desc = '[ ] Find existing buffers' })
-    vim.keymap.set('n', '<leader>/', require('telescope.builtin').current_buffer_fuzzy_find,
-      { desc = '[/] Fuzzily search in current buffer' })
+    vim.keymap.set('n', '<leader>/', require('telescope.builtin').current_buffer_fuzzy_find, { desc = '[/] Fuzzily search in current buffer' })
     vim.keymap.set('n', '<leader>s/', telescope_live_grep_open_files, { desc = '[S]earch [/] in Open Files' })
     vim.keymap.set('n', '<leader>ss', require('telescope.builtin').builtin, { desc = '[S]earch [S]elect Telescope' })
     vim.keymap.set('n', '<leader>gf', require('telescope.builtin').git_files, { desc = 'Search [G]it [F]iles' })

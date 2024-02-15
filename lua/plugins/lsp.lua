@@ -30,7 +30,7 @@ return {
         yamlls = {},
         tflint = {},
         marksman = {},
-      }
+      },
     },
     config = function(_, opts)
       --  This function gets run when an LSP connects to a particular buffer.
@@ -96,6 +96,6 @@ return {
           }
         end,
       }
-    end
+    end,
   },
 }

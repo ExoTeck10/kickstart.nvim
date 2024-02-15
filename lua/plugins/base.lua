@@ -11,13 +11,13 @@ return {
   -- Useful plugin to show you pending keybinds.
   {
     'folke/which-key.nvim',
-    event = "VeryLazy",
+    event = 'VeryLazy',
     init = function()
       vim.o.timeout = true
       vim.o.timeoutlen = 300
     end,
     config = function()
-      require('which-key').setup({})
+      require('which-key').setup {}
 
       -- document existing key chains
       require('which-key').register {
@@ -30,13 +30,28 @@ return {
         ['<leader>t'] = { name = '[T]oggle', _ = 'which_key_ignore' },
         ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
       }
+      require('which-key').register {
+        ['<leader>wK'] = {
+          function()
+            vim.cmd 'WhichKey'
+          end,
+          'WhichKey all keymaps',
+        },
+        ['<leader>wk'] = {
+          function()
+            local input = vim.fn.input 'WhichKey: '
+            vim.cmd('WhichKey ' .. input)
+          end,
+          'WhichKey query lookup',
+        },
+      }
       -- register which-key VISUAL mode
       -- required for visual <leader>hs (hunk stage) to work
       require('which-key').register({
         ['<leader>'] = { name = 'VISUAL <leader>' },
         ['<leader>h'] = { 'Git [H]unk' },
       }, { mode = 'v' })
-    end
+    end,
   },
 
   {
@@ -50,12 +65,12 @@ return {
   -- Catppuccin thene
   {
     'catppuccin/nvim',
-    name = "catppuccin",
+    name = 'catppuccin',
     lazy = false,
     priority = 1000,
     opts = {
-      flavour = "macchiato",
-    }
+      flavour = 'macchiato',
+    },
   },
 
   {
@@ -64,11 +79,31 @@ return {
     -- Enable `lukas-reineke/indent-blankline.nvim`
     -- See `:help ibl`
     main = 'ibl',
-    opts = {},
+    opts = {
+      -- indentLine_enabled = 1,
+      -- filetype_exclude = {
+      --   'help',
+      --   'terminal',
+      --   'lazy',
+      --   'lspinfo',
+      --   'TelescopePrompt',
+      --   'TelescopeResults',
+      --   'mason',
+      -- },
+      -- show_trailing_blankline_indent = false,
+      -- show_first_indent_level = false,
+      -- show_current_context = true,
+      -- show_current_context_start = true,
+    },
   },
 
   -- "gc" to comment visual regions/lines
-  { 'numToStr/Comment.nvim', opts = {} },
+  {
+    'numToStr/Comment.nvim',
+    opts = {
+      mappings = { extra = false },
+    },
+  },
 
   -- NOTE: Next Step on Your Neovim Journey: Add/Configure additional "plugins" for kickstart
   --       These are some example plugins that I've included in the kickstart repository.
