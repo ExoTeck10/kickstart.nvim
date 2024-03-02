@@ -32,6 +32,9 @@ vim.keymap.set('n', '<C-l>', '<C-w>l', { desc = 'Window right' })
 vim.keymap.set('v', '<', '<gv', { desc = 'Indent line' })
 vim.keymap.set('v', '>', '>gv', { desc = 'Indent line' })
 
+-- Generate new vertical split
+vim.keymap.set('n', 'vv', '<C-w>v', { desc = 'new vertical split' })
+
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })

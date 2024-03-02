@@ -43,7 +43,10 @@ vim.o.relativenumber = true
 
 vim.o.expandtab = true
 vim.o.smartindent = true
+vim.o.cindent = true
+vim.o.cinoptions = '(0,w1,j1,J1,l1,Ls'
 vim.o.tabstop = 2
 vim.o.shiftwidth = 2
+vim.o.filetype = 'plugin'
 
 -- vim: ts=2 sts=2 sw=2 et

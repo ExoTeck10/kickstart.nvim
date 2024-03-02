@@ -61,6 +61,22 @@ return {
     -- See `:help lualine.txt`
     opts = {},
   },
+  {
+    'romgrk/barbar.nvim',
+    lazy = false,
+    dependencies = {
+      'lewis6991/gitsigns.nvim',
+      'nvim-tree/nvim-web-devicons',
+    },
+    init = function()
+      vim.g.barbar_auto_setup = false
+    end,
+    opts = {},
+    keys = {
+      { '<leader>,', '<cmd>BufferPrevious<cr>', desc = 'Previous Buffer' },
+      { '<leader>.', '<cmd>BufferNext<cr>',     desc = 'Next Buffer' },
+    },
+  },
 
   -- Catppuccin thene
   {
@@ -76,24 +92,10 @@ return {
   {
     -- Add indentation guides even on blank lines
     'lukas-reineke/indent-blankline.nvim',
-    -- Enable `lukas-reineke/indent-blankline.nvim`
-    -- See `:help ibl`
     main = 'ibl',
     opts = {
-      -- indentLine_enabled = 1,
-      -- filetype_exclude = {
-      --   'help',
-      --   'terminal',
-      --   'lazy',
-      --   'lspinfo',
-      --   'TelescopePrompt',
-      --   'TelescopeResults',
-      --   'mason',
-      -- },
-      -- show_trailing_blankline_indent = false,
-      -- show_first_indent_level = false,
-      -- show_current_context = true,
-      -- show_current_context_start = true,
+      scope = { enabled = true },
+      indent = { char = '|' },
     },
   },
 
@@ -102,6 +104,25 @@ return {
     'numToStr/Comment.nvim',
     opts = {
       mappings = { extra = false },
+    },
+  },
+
+  -- Navigation between tmux and neovim
+  {
+    'christoomey/vim-tmux-navigator',
+    cmd = {
+      'TmuxNavigateLeft',
+      'TmuxNavigateDown',
+      'TmuxNavigateUp',
+      'TmuxNavigateRight',
+      'TmuxNavigatePrevious',
+    },
+    keys = {
+      { '<c-h>',  '<cmd><C-U>TmuxNavigateLeft<cr>' },
+      { '<c-j>',  '<cmd><C-U>TmuxNavigateDown<cr>' },
+      { '<c-k>',  '<cmd><C-U>TmuxNavigateUp<cr>' },
+      { '<c-l>',  '<cmd><C-U>TmuxNavigateRight<cr>' },
+      { '<c-\\>', '<cmd><C-U>TmuxNavigatePrevious<cr>' },
     },
   },
 
