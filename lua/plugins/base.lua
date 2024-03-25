@@ -110,6 +110,7 @@ return {
   -- Navigation between tmux and neovim
   {
     'christoomey/vim-tmux-navigator',
+    lazy = false,
     cmd = {
       'TmuxNavigateLeft',
       'TmuxNavigateDown',
